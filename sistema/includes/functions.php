@@ -1,7 +1,7 @@
 <?php 
 	date_default_timezone_set('America/Mexico_City'); 
 	
-	function fechaC(){
+	function fecha(){
 		$mes = array("","Enero", 
 					  "Febrero", 
 					  "Marzo", 
