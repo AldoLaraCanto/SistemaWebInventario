@@ -29,17 +29,23 @@
 				<th>Telefono</th>
 				<th>Direccion</th>
 				<th>Rol</th>
+				<th>Foto</th>
 				<th>Acciones</th>
 			</tr>
 
 		<?php 
-			$query = mysqli_query($conection,"SELECT u.idusuario, u.nombre, u.correo, u.usuario, u.telefono, u.direccion, r.rol FROM usuario u INNER JOIN rol r ON u.rol = r.idrol ORDER BY idusuario ASC");
+			$query = mysqli_query($conection,"SELECT u.idusuario, u.nombre, u.correo, u.usuario, u.telefono, u.direccion, r.rol, u.foto FROM usuario u INNER JOIN rol r ON u.rol = r.idrol ORDER BY idusuario ASC");
 			mysqli_close($conection);
 			$result = mysqli_num_rows($query);
 
 			if($result > 0){
+				
 				while ($data = mysqli_fetch_array($query)) {	
-
+					if($data['foto'] != 'img_usuario.png') {
+						$foto = 'img/uploads/'.$data['foto'];
+					}else{
+						$foto = 'img/'.$data['foto'];
+					}
 			?>
 
 				<tr>
@@ -50,6 +56,7 @@
 					<td><?php echo $data["telefono"]; ?></td>
 					<td><?php echo $data["direccion"]; ?></td>
 					<td><?php echo $data["rol"] ?></td>
+					<td><img src="<?php echo $foto; ?>" style="width: 70px; height: 70px;"></td>
 					<td>
 						<a class="link_edit" href="editar_usuario.php?id=<?php echo $data["idusuario"]; ?>"><i class="fas fa-edit"></i> Editar</a>
 						|

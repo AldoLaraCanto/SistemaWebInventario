@@ -22,6 +22,21 @@
 			$direccion = $_POST['direccion'];
 			$rol = $_POST['rol'];
 
+			$foto = $_FILES['foto'];
+			$nombre_foto = $foto['name'];
+			$type = $foto['type'];
+			$url_temp = $foto['tmp_name'];
+
+			$imgUsuario = 'img_usuario.png';
+
+			if($nombre_foto != ''){
+
+				$destino = 'img/uploads/';
+				$img_nombre = 'img_'.md5(date('d-m-Y H:m:s'));
+				$imgUsuario = $img_nombre.'.jpg';
+				$src = $destino.$imgUsuario;
+			}
+
 			$query = mysqli_query($conection,"SELECT * FROM usuario WHERE usuario= '$user' AND correo = '$email' ");
 
 			$result = mysqli_fetch_array($query);
@@ -29,8 +44,13 @@
 			if($result > 0){
 				$alert='<p class="msg_error">El correo o el usuario ya existe</p>';
 			}else{
-				$query_insert = mysqli_query($conection,"INSERT INTO usuario(nombre,correo,usuario,clave,telefono,direccion,rol) VALUES('$nombre','$email','$user','$clave','$telefono','$direccion','$rol')");
+				$query_insert = mysqli_query($conection,"INSERT INTO usuario(nombre,correo,usuario,clave,telefono,direccion,rol,foto) VALUES('$nombre','$email','$user','$clave','$telefono','$direccion','$rol','$imgUsuario')");
 				if($query_insert){
+					
+					if($nombre_foto != '') {
+						move_uploaded_file($url_temp,$src);
+					}
+
 					$alert='<p class="msg_save">Usuario creado correctamente</p>';
 				}else{
 					$alert='<p class="msg_error">Error al crear el usuario</p>';
@@ -56,7 +76,7 @@
 			<hr>
 			<div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
 
-			<form action="" method="post">
+			<form action="" method="post" enctype="multipart/form-data">
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre Completo">
 
@@ -96,6 +116,19 @@
 					?>
 
 				</select>
+
+				<div class="photo">
+					<label for="foto">Foto</label>
+		        		<div class="prevPhoto">
+		        		<span class="delPhoto notBlock">X</span>
+		        		<label for="foto"></label>
+		        		</div>
+		        		<div class="upimg">
+		        		<input type="file" name="foto" id="foto">
+		        		</div>
+		        		<div id="form_alert"></div>
+				</div>
+
 				<button type="submit"  class="btn_save"><i class="fas fa-save"></i> Crear Usuario</button>
 			</form>
 		</div>

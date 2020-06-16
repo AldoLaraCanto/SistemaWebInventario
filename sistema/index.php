@@ -23,7 +23,7 @@
 	<center>
 	<h1>Inventario del Inmobiliario Escolar.</h1>
         <p>Aqui se podrá revisar, modificar o eliminar datos/información no solo del inmobiliario, sino tambien de los encargados y de los verificadores.</p>
-        <p> Además de el contenido e Información como su ubicacion y en donde se encuentra del inmueble o aparato electronico que se dío de alta en el sistema </p>
+        <p> Además de el contenido e Información como su ubicacion y en donde se encuentra del inmueble o mueble que se dío de alta en el sistema.</p>
       </center>
 
 	<?php include "includes/footer.php";?>
