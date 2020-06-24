@@ -295,6 +295,58 @@ table td{
 	padding: 20px 50px;
 	border: 0;
 }
+/*--------- Paginador --------------------- */
+
+.paginador ul{
+	padding: 15px;
+	list-style: none;
+	background: #FFF;
+	margin-top: 15px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: flex-end;
+}
+.paginador a, .pageSelected{
+	color: #428bca;
+	border: 1px solid #ddd;
+	padding: 5px;
+	display: inline-block;
+	font-size: 14px;
+	text-align: center;
+	width: 35px;
+}
+.paginador a:hover{
+	background: #ddd;
+}
+.pageSelected{
+	color: #FFF;
+	background: #428bca;
+	border: 1px solid #428bca;
+}
+
+/*----------- Buscador ------------ */
+.form_search{
+	display: -webkit-flex;
+	display: -noz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	float: right;
+	background: initial;
+	padding: 10px;
+	border-radius: 10px;
+}
+.form_search .btn_search{
+	background: #1faac8;
+	color: #FFF;
+	padding: 0 20px;
+	border: 0;
+	cursor: pointer;
+	margin-left: 10px;
+}
 /*+++++++++++ Imagen +++++++++ */
 
 .prevPhoto {
@@ -353,9 +405,6 @@ table td{
 	top: -10px;
 	z-index: 10;
 }
-#tbl_list_productos img{
-	width: 50px;
-}
-.imgProductoDelete{
+.imgUsuarioDelete{
 	width: 175px;
 }
