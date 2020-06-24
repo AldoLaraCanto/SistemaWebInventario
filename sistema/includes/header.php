@@ -7,10 +7,9 @@
 ?>
 <header>
 		<div class="header">
-			
-			<h1>Sistema Web Inventario</h1>
+			<h1> Sistema Web Inventario</h1>
 			<div class="optionsBar">
-				<p>Boca del Rio, Veracruz, <?php echo fechaC(); ?> </p>
+				<p>Boca del Rio, Veracruz, <?php echo fecha(); ?> </p>
 				<span>|</span>
 				<span class="user">Usuario: <?php echo $_SESSION['user']; ?></span>
 				<img class="photouser" src="img/user.png" alt="Usuario">
