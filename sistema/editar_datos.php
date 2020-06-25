@@ -53,36 +53,28 @@
 		}
 	}
 
-	//Mostrar datos 
-	if(empty($_REQUEST['id']))
-	{
-		header('Location: lista_datos.php');
-		mysqli_close($conection);
-	}
-	$iddatos = $_REQUEST['id'];
-
-	$sql= mysqli_query($conection,"SELECT d.iddatos, d.num_reporte, d.marca, d.modelo, d.no_serie, d.descripcion, (d.tipo_registro) AS idtipo_registro, (t.tipo_registro) AS tipo_registro, (d.motivo) AS idmotivo, (m.motivo) AS motivo, d.departamento, d.ubicacion_fisica, d.ubicacion_sistema, d.dateadd FROM datos d INNER JOIN motivo m ON d.motivo = m.idmotivo INNER JOIN tipo_registro t ON d.tipo_registro = t.idtipo_registro WHERE iddatos = $iddatos");
-	
-	mysqli_close($conection);
-	$result_sql = mysqli_num_rows($sql);
-
-	if($result_sql == 0){
-		header('Location: lista_datos.php');
+	if(empty($_REQUEST['id'])){
+		header("location: lista_datos.php");
 	}else{
+		$iddatos = $_REQUEST['id'];
+		if(!is_numeric($iddatos)){
+			header("location: lista_datos.php");
+		}
 		
-		while ($data = mysqli_fetch_array($sql)) {
-			$iddatos  = $data['iddatos'];
-			$num_reporte = $data['num_reporte'];
-			$marca = $data['marca'];
-			$modelo = $data['modelo'];
-			$no_serie = $data['no_serie'];
-			$descripcion = $data['descripcion'];
-			$tipo_registro = $data['tipo_registro'];
-			$motivo = $data['motivo'];
-			$departamento = $data['departamento'];
-			$ubicacion_fisica = $data['ubicacion_fisica'];
-			$ubicacion_sistema = $data['ubicacion_sistema'];
+		$query_datos = mysqli_query($conection,"SELECT d.iddatos, d.num_reporte, d.marca, d.modelo, d.no_serie, d.descripcion, t.tipo_registro, m.motivo, d.departamento, d.ubicacion_fisica, d.ubicacion_sistema, d.dateadd 
+												FROM datos d 
+												INNER JOIN motivo m 
+												ON d.motivo = m.idmotivo 
+												INNER JOIN tipo_registro t 
+												ON d.tipo_registro = t.idtipo_registro 
+												WHERE iddatos = $iddatos");
 
+		$result_datos = mysqli_num_rows($query_datos);
+
+		if($result_datos > 0){
+			$data_datos = mysqli_fetch_assoc($query_datos);
+		}else{
+			header("location: lista_datos.php");
 		}
 	}
 ?>
@@ -105,35 +97,35 @@
 
 			<form action="" method="post">
 
-				<input type="hidden" name="id" value="<?php echo $iddatos; ?>">
+				<input type="hidden" name="id" value="<?php echo $data_datos['iddatos']; ?>">
 
 				<label for="num_reporte">Numero de Reporte</label>
-				<input type="number" name="num_reporte" id="num_reporte" placeholder="Numero de Reporte" value="<?php echo $num_reporte; ?>">
+				<input type="number" name="num_reporte" id="num_reporte" placeholder="Numero de Reporte" value="<?php echo $data_datos['num_reporte']; ?>">
 
 				<label for="marca">Marca</label>
-				<input type="text" name="marca" id="marca" placeholder="Marca" value="<?php echo $marca; ?>">
+				<input type="text" name="marca" id="marca" placeholder="Marca" value="<?php echo $data_datos['marca']; ?>">
 
 				<label for="modelo">Modelo</label>
-				<input type="text" name="modelo" id="modelo" placeholder="Modelo" value="<?php echo $modelo; ?>">
+				<input type="text" name="modelo" id="modelo" placeholder="Modelo" value="<?php echo $data_datos['modelo']; ?>">
 
 				<label for="no_serie">Numero de Serie</label>
-				<input type="text" name="no_serie" id="no_serie" placeholder="Numero de Serie" value="<?php echo $no_serie; ?>">
+				<input type="text" name="no_serie" id="no_serie" placeholder="Numero de Serie" value="<?php echo $data_datos['no_serie']; ?>">
 
 				<label for="descripcion">Descripcion</label>
-				<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $descripcion; ?>">
+				<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $data_datos['descripcion']; ?>">
 
 				<label for="tipo_registro">Tipo de Registro</label>
 				<?php 
 
 					include "../conexion.php";
 					$query_tipo_registro = mysqli_query($conection,"SELECT * FROM tipo_registro");
-					mysqli_close($conection);
 					$result_tipo_resgistro = mysqli_num_rows($query_tipo_registro);
+					mysqli_close($conection);
 
 				?>
 				<select name="tipo_registro" id="tipo_registro" class="notItemOne">
+					<option value="<?php echo $data_datos['idtipo_registro']; ?>" selected><?php echo $data_datos['tipo_registro']; ?></option>
 					<?php 
-					echo $option;
 						if($result_tipo_resgistro > 0)
 						{
 							while ($tipo_registro = mysqli_fetch_array($query_tipo_registro)) {
@@ -152,13 +144,13 @@
 
 					include "../conexion.php";
 					$query_motivo = mysqli_query($conection,"SELECT * FROM motivo");
-					mysqli_close($conection);
 					$result_motivo = mysqli_num_rows($query_motivo);
+					mysqli_close($conection);
 
 				?>
 				<select name="motivo" id="motivo" class="notItemOne">
+					<option value="<?php echo $data_datos["idmotivo"]; ?>" selected><?php echo $data_datos["motivo"] ?></option>
 					<?php 
-					echo $option;
 						if($result_motivo > 0)
 						{
 							while ($motivo = mysqli_fetch_array($query_motivo)) {
@@ -171,14 +163,14 @@
 
 				</select>
 
-				<label for="departamento">Departamento</label>
-				<input type="text" name="departamento" id="departamento" placeholder="Departamento" value="<?php echo $departamento; ?>">
+				<label for="departamento">Area/Departamento</label>
+				<input type="text" name="departamento" id="departamento" placeholder="Area/Departamento" value="<?php echo $data_datos['departamento']; ?>">
 
 				<label for="ubicacion_fisica">Ubicacion Fisica</label>
-				<input type="text" name="ubicacion_fisica" id="ubicacion_fisica" placeholder="Ubicacion Fisica" value="<?php echo $ubicacion_fisica; ?>">
+				<input type="text" name="ubicacion_fisica" id="ubicacion_fisica" placeholder="Ubicacion Fisica" value="<?php echo $data_datos['ubicacion_fisica']; ?>">
 
 				<label for="ubicacion_sistema">Ubicacion Sistema</label>
-				<input type="text" name="ubicacion_sistema" id="ubicacion_sistema" placeholder="Ubicacion Sistema" value="<?php echo $ubicacion_sistema; ?>">
+				<input type="text" name="ubicacion_sistema" id="ubicacion_sistema" placeholder="Ubicacion Sistema" value="<?php echo $data_datos['ubicacion_sistema']; ?>">
 
 				<button type="submit"  class="btn_save"><i class="fas fa-save"></i> Actualizar Dato</button>
 

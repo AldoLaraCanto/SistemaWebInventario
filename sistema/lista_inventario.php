@@ -35,6 +35,7 @@
 
 				<th>ID Usuarios</th>
 				<th>Nombre</th>
+				<th>Foto</th>
 				<th>Correo</th>
 				<th>Usuario</th>
 				<th>Telefono</th>
@@ -44,13 +45,22 @@
 
 		<?php 
 
-			$query = mysqli_query($conection,"SELECT d.iddatos, d.num_reporte, d.marca, d.modelo, d.no_serie, d.descripcion, t.tipo_registro, m.motivo, d.departamento, d.ubicacion_fisica, d.ubicacion_sistema, d.dateadd, u.idusuario, u.nombre, u.correo, u.usuario, u.telefono, u.direccion, r.rol FROM usuario u INNER JOIN datos d ON d.usuario_id = u.idusuario INNER JOIN motivo m ON d.motivo = m.idmotivo INNER JOIN rol r ON u.rol = r.idrol INNER JOIN tipo_registro t ON d.tipo_registro = t.idtipo_registro ORDER BY iddatos ASC");
+			$query = mysqli_query($conection,"SELECT d.iddatos, d.num_reporte, d.marca, d.modelo, d.no_serie, d.descripcion, t.tipo_registro, m.motivo, d.departamento, d.ubicacion_fisica, d.ubicacion_sistema, d.dateadd, u.idusuario, u.nombre, u.foto, u.correo, u.usuario, u.telefono, u.direccion, r.rol FROM usuario u INNER JOIN datos d ON d.usuario_id = u.idusuario INNER JOIN motivo m ON d.motivo = m.idmotivo INNER JOIN rol r ON u.rol = r.idrol INNER JOIN tipo_registro t ON d.tipo_registro = t.idtipo_registro ORDER BY iddatos ASC");
 			mysqli_close($conection);
 			$result = mysqli_num_rows($query);
 
 			if($result > 0){
-				while ($data = mysqli_fetch_array($query)) {	
-
+				while ($data = mysqli_fetch_array($query)) {
+					if($data["no_serie"] == null){
+						$no_serie = 'Sin Numero de Serie';
+					}else{
+						$no_serie = $data["no_serie"];
+					}	
+					if($data['foto'] != 'img_usuario.png') {
+						$foto = 'img/uploads/'.$data['foto'];
+					}else{
+						$foto = 'img/'.$data['foto'];
+					}
 			?>
 
 				<tr>
@@ -58,7 +68,7 @@
 					<td><?php echo $data["num_reporte"]; ?></td>
 					<td><?php echo $data["marca"]; ?></td>
 					<td><?php echo $data["modelo"]; ?></td>
-					<td><?php echo $data["no_serie"] ?></td>
+					<td><?php echo $no_serie; ?></td>
 					<td><?php echo $data["descripcion"] ?></td>
 					<td><?php echo $data["tipo_registro"] ?></td>
 					<td><?php echo $data["motivo"] ?></td>
@@ -69,6 +79,7 @@
 
 					<td><?php echo $data["idusuario"]; ?></td>
 					<td><?php echo $data["nombre"]; ?></td>
+					<td><img src="<?php echo $foto; ?>"  style="width: 70px; height: 70px;"></td>
 					<td><?php echo $data["correo"]; ?></td>
 					<td><?php echo $data["usuario"]; ?></td>
 					<td><?php echo $data["telefono"]; ?></td>
