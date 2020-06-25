@@ -108,7 +108,6 @@
 				$foto = '<img id="img" src="img/uploads/'.$data_usuario['foto'].'" alt="Foto">';
 			}
 
-			//print_r($data_usuario);
 		}else{
 			header("location: lista_usuarios.php");
 		}
@@ -166,7 +165,6 @@
 				?>
 				<select name="rol" id="rol" class="notItemOne">
 					<option value="<?php echo $data_usuario['idrol']; ?>" selected><?php echo $data_usuario['rol']; ?></option>
-					option
 					<?php 
 						if($result_rol > 0)
 						{

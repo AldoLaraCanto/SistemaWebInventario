@@ -49,7 +49,7 @@ if(!empty($_SESSION['active']))
 
 <body>
 	<section id="container">
-		<form action="" method="post">
+		<form action="" method="post"><h1>Sistema Web Inventario </h1>
 			<h3>Iniciar Sesion</h3>
 			<img src="img/login.png" alt="Login">
 

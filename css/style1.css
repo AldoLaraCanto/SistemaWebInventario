@@ -3,9 +3,21 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+h1{
+	font-family: 'Arial';
+	font-size: 20pt;
+	letter-spacing: 1px;
+	width: 100%;
+	background: #2980b9;
+	padding: 15px;
+	color: #FFF;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 5px auto;
+}
 h3{
 	font-family: 'Arial';
-	font-size: 25pt;
+	font-size: 20pt;
 	letter-spacing: 1px;
 	width: 100%;
 	background: #2980b9;
