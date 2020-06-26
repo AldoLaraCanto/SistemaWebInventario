@@ -13,7 +13,8 @@
 <body>
 	<?php include "includes/header.php";?>
 	<section id="container">
-		<h1>Informacion Acerca del Sistema Web</h1>
+		<h1><i class="fas fa-info-circle"></i> Informacion Acerca del Sistema Web</h1>
+		<a href=".pdf" class="btn_new"><i class="fa fa-download" aria-hidden="true"></i> Imprimir Manual</a>
 	</section>
 
 	<center>

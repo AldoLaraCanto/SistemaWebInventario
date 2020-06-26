@@ -10,8 +10,7 @@
 	<hr>
 	<br>
 	<center>
-		<p>© 2020 - Sistema Web Inventario</p>
-		<p>Por: Lara Canto</p>
+		<p>© 2020 - Sistema Web Inventario UV</p>
 	</center>
 	<br>
 </footer>

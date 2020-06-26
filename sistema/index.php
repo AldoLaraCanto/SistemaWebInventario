@@ -13,7 +13,7 @@
 <body>
 	<?php include "includes/header.php";?>
 	<section id="container">
-		<h1>Bienvenido al Sistema Web Inventario</h1>
+		<h2>Bienvenido al Sistema Web del Inventario de la Direccion de Control de Bienes Muebles e Inmuebles de la UV</h2>
 	</section>
 
 	<center>
@@ -21,7 +21,7 @@
 	</center>
 	<br>
 	<center>
-	<h1>Inventario del Inmobiliario Escolar.</h1>
+	<h1>Inventario de la Direccion de Control de Bienes Muebles e Inmuebles de la UV</h1>
         <p>Aqui se podrá revisar, modificar o eliminar datos/información no solo del inmobiliario, sino tambien de los encargados y de los verificadores.</p>
         <p> Además de el contenido e Información como su ubicacion y en donde se encuentra del inmueble o mueble que se dío de alta en el sistema.</p>
       </center>

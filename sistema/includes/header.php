@@ -7,7 +7,7 @@
 ?>
 <header>
 		<div class="header">
-			<h1> Sistema Web Inventario</h1>
+			<h1> Sistema Web Inventario UV</h1>
 			<div class="optionsBar">
 				<p>Boca del Rio, Veracruz, <?php echo fecha(); ?> </p>
 				<span>|</span>
