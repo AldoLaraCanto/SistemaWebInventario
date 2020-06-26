@@ -55,7 +55,7 @@ header{
 .header{
 	color: #FFF;
 	background: #3d7ba8;
-	height: 35px;
+	height: 45px;
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
@@ -83,8 +83,8 @@ header{
 }
 .photouser {
     margin-left: 30px;
-    width: 25px;
-    height: 25px;
+    width: 33px;
+    height: 30px;
 }
 .close{
 	width: 25px;
@@ -124,7 +124,6 @@ nav a{
 	border-right: 1px solid #319B8F;
 }
 nav .principal > a{
-    background: url(../images/arrow_bottom.png) no-repeat;
     background-position-x: 0%;
     background-position-y: 0%;
     background-size: auto auto;
@@ -155,7 +154,7 @@ nav li ul li:last-child{
 	overflow: hidden;
 }
 #container{
-	padding: 90px 15px 15px;
+	padding: 100px 15px 15px;
 }
 /************************************************/
 /*----------------Registro Usuario -----------------*/
@@ -194,7 +193,7 @@ input,select{
 	border: 1px solid #85929e;
 	border-radius: 5px;
 }
-.notItemOne option: first-child{
+.notItemOne option:first-child{
 	display: none;
 }
 .btn_save{

@@ -41,7 +41,7 @@ h3{
 }
 
 #container form{
-	width: 450px;
+	width: auto;
 	background: #FFF;
 	padding: 10px;
 }

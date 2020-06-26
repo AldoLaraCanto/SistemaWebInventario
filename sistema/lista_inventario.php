@@ -16,8 +16,14 @@
 	<section id="container">
 		
 		<h1><i class="fas fa-warehouse"></i>  Reporte General del Inventario</h1>
+		<a href="imprimir_reporte.php" class="btn_new"><i class="fa fa-download" aria-hidden="true"></i> Imprimir Reporte</a>
+
+		<form action="buscar_inventario.php" method="get" class="form_search">
+			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+			<button ype="submit" class="btn_search"><i class="fas fa-search"></i></button>
+		</form>
 		<br>
-		<br>
+
 		<table>
 			<tr>
 				<th>ID Datos</th>
@@ -28,7 +34,7 @@
 				<th>Descripcion</th>
 				<th>Tipo de Registro</th>
 				<th>Nombre Motivo</th>
-				<th>Departamento</th>
+				<th>Area/Departamento</th>
 				<th>Ubicacion Fisica</th>
 				<th>Ubicacion del Sistema</th>
 				<th>Fecha</th>
