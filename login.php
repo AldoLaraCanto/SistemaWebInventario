@@ -40,14 +40,19 @@ if(!empty($_SESSION['active']))
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Login | Sisteme Web Inventario</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Login | Sistema Web Inventario UV</title>
 	<link rel="stylesheet" type="text/css" href="css/style1.css">
 </head>
 
 <body>
+	<div id="contenedor_carga">
+		<div id="carga"></div>
+	</div>
+
 	<section id="container">
 		<form action="" method="post"><h1>Sistema Web Inventario UV</h1>
 			<h3>Iniciar Sesion</h3>
@@ -59,6 +64,16 @@ if(!empty($_SESSION['active']))
 			<input type="submit" value="INGRESAR">
 
 		</form>
-	</section>	
+	</section>
+
+	<script>
+	window.onload = function(){
+		var contenedor = document.getElementById('contenedor_carga');
+
+		contenedor.style.visibility = 'hidden';
+		contenedor.style.opacity = '100';
+	}
+	</script>
+
 </body>
 </html>
