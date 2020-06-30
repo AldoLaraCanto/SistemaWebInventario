@@ -73,7 +73,49 @@ h3{
 }
 
 .alert{
-	font-family: 'Airal';
+	font-family: 'Arial';
 	font-size: 16px;
 	text-align: center;
+	color: red;
+}
+/*----------- Contendor_Carga -----------*/
+*,*:after, *.before{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#contenedor_carga{
+	background: #FFF;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	-webkit-transition: all 1.5s ease;
+	-o-transition: all 1.5s ease;
+	transition: all 1.5s ease;
+	z-index: 10000;
+}
+#carga{
+	border: 15px solid #ddd;
+	border-top-color: #52be80; 
+	border-top-style: groove;
+	height: 100px;
+	width: 100px; 
+	border-radius: 100%;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-animation: girar 2s linear infinite;
+	-o-animation: girar 2s linear infinite;
+	animation: girar 2s linear infinite;
+}
+@keyframes girar{
+	from{ transform: rotate(0deg);}
+	to{ transform: rotate(360deg);}
 }
