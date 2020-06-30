@@ -407,3 +407,34 @@ table td{
 .imgUsuarioDelete{
 	width: 175px;
 }
+
+/*------------ Slider-----------*/
+.slider{
+	margin: auto;
+	overflow: hidden;
+}
+.slider ul{
+	display: flex;
+	padding: 0;
+	width: 300%;
+
+	animation: cambio 15s infinite alternate;
+	animation-timing-function: step-start;
+}
+.slider li{
+	width: 100%;
+	list-style: none;
+}
+.slider img{
+	width: 100%;
+}
+@keyframes cambio{
+	0% { margin-left: 0; }
+	25% { margin-left: 0; }
+
+	45% {margin-left: -100%;}
+	65% {margin-left: -100%;}
+
+	85% {margin-left: -200%;}
+	100% {margin-left: -200%;}
+}
