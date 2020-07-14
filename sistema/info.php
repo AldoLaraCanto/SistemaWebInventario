@@ -17,14 +17,21 @@
 		<a href=".pdf" class="btn_new"><i class="fa fa-download" aria-hidden="true"></i> Descargar Manual</a>
 	</section>
 
-	<center>
-		<img style="width: 1000px; height: 500px;" src="img/DesarrolladorWeb.jpg" border="2">
-	</center>
+	<div class="slider">
+		<center>
+			<ul>
+				<li><img style="width: 1000px; height: 500px;" src="img/DesarrolladorWeb.jpg" border="2"></li>
+				<li><img style="width: 1000px; height: 500px;" src="img/inventario1.jpg" border="2"></li>
+				<li><img style="width: 960px; height: 480px;" src="img/inventario2.jpg" border="2"></li>
+			</ul>
+		<center>
+	</div>
 	<br>
-	<center>
 
-	<h2>Desarollado por:</h2>
-	<h3>Alberto Edai Aldo Lara Canto y Adolfo Edel Adan Lara Canto</h3>
+	<center>
+		<h2>Desarollado por:</h2>
+		<h3>Alberto Edai Aldo Lara Canto y Adolfo Edel Adan Lara Canto</h3>
+	</center>
 
 
 	<?php include "includes/footer.php";?>
